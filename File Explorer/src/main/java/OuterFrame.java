@@ -1,0 +1,52 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class OuterFrame {
+	static String path;
+	static JFrame outer;
+	static TopPanel mTopPanel;
+	static JPanel mainPanel, topPanel;
+	static int startHt = 60;
+
+	OuterFrame() {
+		addComponents();
+	}
+
+	static void addComponents() {
+
+		mainPanel = (new MainPanel()).getMainPanel();
+		outer.add(mainPanel);
+		outer.add((new SidePanel()).getSidePanel());
+		mTopPanel = new TopPanel();
+		outer.add(topPanel = (mTopPanel).getTopPanel());
+		outer.add((new MainMenu()).getMenu());
+	}
+
+	public static void main(String[] args) {
+		path ="ThisPc";
+		outer = new JFrame("File Manager");
+		outer.setLayout(null);
+		outer.setSize(920, 670);
+		new OuterFrame();
+		outer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		outer.getContentPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		outer.pack();
+		outer.setResizable(false);
+		outer.setVisible(true);
+	}
+
+	static void rePaintFrame() {
+		try {
+			OuterFrame.outer.remove(OuterFrame.mainPanel);
+			OuterFrame.outer.remove(OuterFrame.topPanel);
+			mTopPanel = new TopPanel();
+			OuterFrame.outer.add(OuterFrame.topPanel = mTopPanel.getTopPanel());
+			OuterFrame.outer.add(OuterFrame.mainPanel = new MainPanel().getMainPanel());
+			OuterFrame.mainPanel.repaint();
+		} catch (NullPointerException e) {
+			path = "ThisPc";
+			rePaintFrame();
+		}
+	}
+
+}

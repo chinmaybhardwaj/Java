@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="File Explorer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/File_Explorer_jar</output-path>
+    <root id="archive" name="File Explorer.jar">
+      <element id="module-output" name="File Explorer" />
+    </root>
+  </artifact>
+</component>
