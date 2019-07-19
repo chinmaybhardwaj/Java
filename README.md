@@ -1,2 +1,2 @@
-# hackerrank
-My HackerRank solutions
+# Java
+Java applications, scripts and HackerRank solutions
